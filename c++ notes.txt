@@ -1,0 +1,56 @@
+if there is a value 3.14, it is by default considered as double data_type value in c++
+so while passing these decimal nums into function it passes double data_type value
+thats why while passing values like these :
+if we want to pass it like float then it should be written as 3.14f or 3.14F
+if we want to pass it like long double then it should be written as 3.14l or 3.14L
+
+also lets say:
+int b=45;
+void fn();
+int main()
+{
+    int a=4;
+    int b = 5; // b is declared as local variable and 5 assigned to it, though it is already declared as global variable above
+    cout << b<< endl;
+    cout << ::b <<endl; // "::" is scope resolution op that also helps to access value of global variable
+    fn();
+    return 0;
+}
+
+void fn()
+{
+    cout << b;
+}
+
+output: 5 45 45
+
+int b=45;
+void fn();
+int main()
+{
+    int a=4;
+    b = 5; // b is not declared here as a local variable, rather the value of global variable b is modified from 45 to 5, now b gets    updated to 5
+    cout << b<< endl;
+    cout << ::b <<endl;
+    fn();
+    return 0;
+}
+
+void fn()
+{
+    cout << b;
+}
+optput: 5 5 5
+
+No, reference variables and pointers are not the same in C++. While they are both used to refer to other variables, they have significant differences in how they work and how they are used.
+
+Key Differences Between Reference Variables and Pointers
+Feature	                Reference Variable	                                                    Pointer
+Definition	An alias for an existing variable.	                A variable that stores the memory address of another variable.
+Syntax	        Declared using & (e.g., int &ref = var;).	        Declared using * (e.g., int *ptr = &var;).
+Initialization	Must be initialized at the time of declaration.	        Can be declared without initialization.
+Reassignment	Cannot be reassigned to refer to another variable.	Can be reassigned to point to another variable.
+Null Value	Cannot be null.	                                        Can be null (e.g., ptr = nullptr;).
+Dereferencing	No need to dereference explicitly.	                Must use * to dereference and access the value.
+Memory Address	Does not have its own memory address.	                Has its own memory address.   
+
